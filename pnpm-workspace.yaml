@@ -1,0 +1,8 @@
+packages:
+  - 'backend'
+  - 'web'
+
+allowBuilds:
+  '@scarf/scarf': false
+  esbuild: false
+  msgpackr-extract: false

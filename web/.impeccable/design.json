@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T12:57:30+05:30",
+  "title": "Design System: Project Sol (SolTransit)",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Harbor Cobalt",
+        "canonical": "#2563EB",
+        "tonalRamp": ["#1E3A8A", "#1D4ED8", "#2563EB", "#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE", "#EFF6FF"]
+      },
+      "ink-prussian": {
+        "role": "neutral",
+        "displayName": "Prussian Navy Ink",
+        "canonical": "#0F2544",
+        "tonalRamp": ["#0F2544", "#1E3A5F", "#334E68", "#486581", "#5B6E84", "#829AB1", "#BCCCDC", "#F0F4F8"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Bridge Daylight Paper",
+        "canonical": "#F7F9FC",
+        "tonalRamp": ["#CBD5E1", "#D9E2EC", "#E2E8F0", "#EAF0F8", "#EFF3F8", "#F0F4F8", "#F7F9FC", "#FFFFFF"]
+      },
+      "emerald-dot": {
+        "role": "semantic",
+        "displayName": "Emerald Verified Signal",
+        "canonical": "#0D9488",
+        "tonalRamp": ["#115E59", "#0F766E", "#0D9488", "#14B8A6", "#2DD4BF", "#5EEAD4", "#99F6E4", "#F0FDFA"]
+      },
+      "amber-dot": {
+        "role": "semantic",
+        "displayName": "Amber Hold Signal",
+        "canonical": "#D97706",
+        "tonalRamp": ["#78350F", "#92400E", "#B45309", "#D97706", "#F59E0B", "#FBBF24", "#FDE68A", "#FFFBEB"]
+      },
+      "crimson-dot": {
+        "role": "semantic",
+        "displayName": "Crimson Escalation Signal",
+        "canonical": "#E11D48",
+        "tonalRamp": ["#881337", "#9F1239", "#BE123C", "#E11D48", "#F43F5E", "#FB7185", "#FECDD3", "#FFF1F2"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Page & Section Headings", "purpose": "AdminShell h1 and ManifestHeader h2 titles." },
+      "body": { "displayName": "Operational Body Copy", "purpose": "Ledger cells, form descriptions, and status banners." },
+      "mono": { "displayName": "Tabular Telemetry Mono", "purpose": "Trip IDs, plates, IST timestamps, INR currency, and coordinates." }
+    },
+    "shadows": [
+      {
+        "name": "shadow-manifest",
+        "value": "0 1px 2px rgba(15, 37, 68, 0.04)",
+        "purpose": "Subtle surface definition alongside hairline borders."
+      },
+      {
+        "name": "shadow-drawer",
+        "value": "-8px 0 32px rgba(15, 37, 68, 0.12)",
+        "purpose": "SlideOverDrawer and elevated overlay separation without competing borders."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-harbor",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Springless operational transitions over transform, opacity, background-color, and border-color."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary dispatch, approval, and publish CTA.",
+      "html": "<button class=\"ds-btn-primary\">Dispatch Trip</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 8px 14px; border-radius: 8px; background: var(--primary, #2563EB); color: #FFFFFF; border: 1px solid transparent; font-family: var(--font-sans); font-size: 14px; font-weight: 500; cursor: pointer; transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-primary:hover { background: #1D4ED8; } .ds-btn-primary:focus-visible { outline: 2px solid var(--ring, #2563EB); outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Status Signal Badge",
+      "kind": "chip",
+      "description": "Server-verified telemetry and trip workflow pill with leading semantic beacon.",
+      "html": "<span class=\"ds-badge-emerald\"><span class=\"ds-badge-dot\"></span>LIVE GPS</span>",
+      "css": ".ds-badge-emerald { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 6px; background: #F0FDFA; color: #0F766E; border: 1px solid #99F6E4; font-family: var(--font-mono); font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; } .ds-badge-dot { width: 6px; height: 6px; border-radius: 9999px; background: #0D9488; }"
+    },
+    {
+      "name": "Operational Manifest Card",
+      "kind": "card",
+      "refersTo": "card-manifest",
+      "description": "Rest-state hairline card container free of drop shadows.",
+      "html": "<div class=\"ds-card\">Active Sortie Manifest</div>",
+      "css": ".ds-card { background: var(--card, #FFFFFF); color: var(--foreground, #0F2544); border: 1px solid var(--border, #D9E2EC); border-radius: 10px; padding: 16px; font-family: var(--font-sans); font-size: 14px; }"
+    },
+    {
+      "name": "Control Well Input",
+      "kind": "input",
+      "description": "Search and filter input inside dispatch and fleet ledgers.",
+      "html": "<input class=\"ds-input\" type=\"text\" value=\"TS 07 UA 4821\" aria-label=\"Search cab\" />",
+      "css": ".ds-input { width: 100%; height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--input, #CBD5E1); background: var(--card, #FFFFFF); color: var(--foreground, #0F2544); font-family: var(--font-sans); font-size: 14px; transition: border-color 150ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 150ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-input:focus-visible { outline: none; border-color: var(--ring, #2563EB); box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25); }"
+    },
+    {
+      "name": "Bridge Nav Item",
+      "kind": "nav",
+      "description": "Active left rail navigation item in the 224px AdminShell sidebar.",
+      "html": "<a class=\"ds-nav-active\" href=\"/live-tracking\">Live Tracking</a>",
+      "css": ".ds-nav-active { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; background: #EFF4FF; color: #1D4ED8; font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-decoration: none; transition: background-color 150ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-nav-active:hover { background: #E0EAFF; } .ds-nav-active:focus-visible { outline: 2px solid var(--ring, #2563EB); outline-offset: 1px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Harbor Pilot Dispatch & Bridge Telemetry",
+    "overview": "SolTransit operates like a daylight maritime harbor pilot's bridge rather than a consumer ride-hailing app. Every surface—from a transport manager's multi-shift dispatch desk to an employee's pickup pass and a driver's stationary cab console—speaks one disciplined visual grammar: daylight mineral-white paper, Prussian navy typographic authority, restrained Harbor Cobalt primary actions, and strict semantic signal beacons.",
+    "keyCharacteristics": [
+      "Staleness-Honest Telemetry Beacons paired with exact tabular timestamps and delay seconds",
+      "Non-Destructive Stamped States preserving auditable transition history",
+      "Hairline-ruled daylight operational manifests with focus-trapped slide-over inspectors"
+    ],
+    "rules": [
+      {
+        "name": "The Signal Scarcity Rule",
+        "body": "Inactive cards and neutral icons stay monochrome #0F2544 / #5B6E84 so emerald, amber, cobalt, and crimson signal badges read cleanly on first scan.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Kicker Rule",
+        "body": "Page h1 titles (AdminShell) and section h2 headings (ManifestHeader, roadmap banners) appear cleanly without uppercase eyebrow kickers stacked above them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Telemetry Rule",
+        "body": "All KPI counts, trip codes, timestamps (Asia/Kolkata), GPS coordinates, rupee currency (en-IN INR), vehicle capacities, and delay durations enforce font-mono tabular-nums.",
+        "section": "typography"
+      },
+      {
+        "name": "Single-Elevation Declaration Rule",
+        "body": "Rest-state cards separate solely via 1px borders with zero drop shadows; floating drawers and overlays declare depth solely via directional shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do associate every form Input / Select / checkbox with unique IDs (useId() for shared shell controls) and explicit FieldLabel or aria-label.",
+      "Do give table rows explicit keyboard-accessible button or Link triggers rather than relying solely on click handlers.",
+      "Do use Lucide SVG icons (aria-hidden when decorative) and real domain fixtures (Hyderabad corridors, IST timestamps, INR paise formatting)."
+    ],
+    "donts": [
+      "Don't nest interactive elements (use buttonVariants on Link instead of wrapping Button inside Link).",
+      "Don't animate CSS layout properties (width, height, top) when transform: scaleX() suffices.",
+      "Don't place standalone uppercase badge kickers directly above h1/h2 headings or show raw enum underscores in visible prose headings."
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+# Dependencies & Builds
+node_modules/
+.pnpm-store/
+dist/
+build/
+.next/
+.dart_tool/
+coverage/
+
+# Environment & Local Secrets (never commit)
+.env
+.env.local
+.env.*.local
+infra/.env
+backend/.env
+web/.env.local
+
+# Backups & OS noise
+infra/backups/*.dump
+infra/backups/*.sql
+*.log
+.DS_Store
+Thumbs.db
+

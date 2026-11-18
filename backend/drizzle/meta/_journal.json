@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794847258337,
+      "tag": "0000_0000_initial_transport_core",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795020424618,
+      "tag": "0001_locality_allocation_recurring_bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795030500000,
+      "tag": "0002_commute_plans_and_names",
+      "breakpoints": true
+    }
+  ]
+}

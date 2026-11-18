@@ -1,0 +1,22 @@
+{
+  "name": "project_sol",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project Sol (SolTransit) Enterprise Employee Transportation Management Platform",
+  "scripts": {
+    "docker:up": "docker compose -f infra/docker-compose.yml --env-file infra/.env up -d",
+    "docker:stop": "docker compose -f infra/docker-compose.yml stop",
+    "docker:down": "docker compose -f infra/docker-compose.yml down",
+    "docker:health": "docker compose -f infra/docker-compose.yml ps",
+    "backend:dev": "pnpm --filter backend start:dev",
+    "backend:build": "pnpm --filter backend build",
+    "backend:test": "pnpm --filter backend test",
+    "backend:test:e2e": "pnpm --filter backend test:e2e",
+    "backend:lint": "pnpm --filter backend lint",
+    "db:generate": "pnpm --filter backend db:generate",
+    "db:migrate": "pnpm --filter backend db:migrate",
+    "db:seed": "pnpm --filter backend db:seed",
+    "web:dev": "pnpm --filter web dev",
+    "web:build": "pnpm --filter web build"
+  }
+}

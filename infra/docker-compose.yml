@@ -1,0 +1,59 @@
+name: project-sol-infra
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: sol_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-transport_dev}
+      POSTGRES_USER: ${POSTGRES_USER:-sol_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sol_dev_pg_pass}
+      TZ: Asia/Kolkata
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - sol_pg_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sol_admin} -d ${POSTGRES_DB:-transport_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    networks:
+      - sol_net
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: sol_redis
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --requirepass
+      - ${REDIS_PASSWORD:-sol_dev_redis_pass}
+      - --appendonly
+      - "yes"
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - sol_redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD:-sol_dev_redis_pass} ping | grep PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    networks:
+      - sol_net
+
+volumes:
+  sol_pg_data:
+    name: sol_pg_data
+  sol_redis_data:
+    name: sol_redis_data
+
+networks:
+  sol_net:
+    name: sol_net
+    driver: bridge
